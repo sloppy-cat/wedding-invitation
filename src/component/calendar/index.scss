@@ -4,7 +4,7 @@
     grid-template-columns: repeat(7, 1fr);
     margin: 1rem;
     border: 1px solid var(--light-grey-color);
-
+    font-size: 0.8rem;
     > div {
       aspect-ratio: 1;
       display: flex;
@@ -18,13 +18,13 @@
 
       &.holiday {
         > span {
-          color: var(--red-color);
+          color: lightcoral;
         }
       }
 
       &.wedding-date {
         position: relative;
-
+        font-weight: bold;
         > span {
           z-index: 1;
         }
@@ -68,6 +68,7 @@
     align-items: center;
 
     .countdown {
+      font-size: 0.9rem;
       display: grid;
       width: 15rem;
       grid-template-columns: 1fr 1rem 1fr 1rem 1fr 1rem 1fr;
@@ -78,7 +79,7 @@
       .count {
         opacity: 0.8;
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.0rem;
       }
       .unit {
         font-weight: bold;
@@ -90,6 +91,7 @@
     .message {
       margin-top: 2rem;
       margin-bottom: 1.5rem;
+      font-size: 0.9rem;
       .d-day {
         color: var(--theme-color);
       }

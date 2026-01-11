@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import patelUrl from "../../icons/petal.png"
+import veilUrl from "../../icons/veil.png"
 
 const X_SPEED = 0.6
 const X_SPEED_VARIANCE = 0.8
@@ -33,8 +34,8 @@ class Petal {
   }
 
   initialize() {
-    this.w = 25 + Math.random() * 15
-    this.h = 20 + Math.random() * 10
+    this.w = 35 + Math.random() * 15
+    this.h = 30 + Math.random() * 10
     this.opacity = this.w / 80
     this.flip = Math.random()
 
@@ -73,76 +74,163 @@ class Petal {
     this.draw()
   }
 }
+class VeilParticle {
+  x!: number
+  y!: number
+  scale!: number
+  speed!: number
+  sway!: number
+  rotation!: number
+  rotateSpeed!: number
+  alpha!: number
+
+  constructor(
+    private canvas: HTMLCanvasElement,
+    private ctx: CanvasRenderingContext2D,
+    private img: HTMLImageElement
+  ) {
+    this.reset(true)
+  }
+
+  reset(initial = false) {
+    this.x = Math.random() * this.canvas.width
+    this.y = initial ? Math.random() * this.canvas.height : -300
+
+this.scale = 0.28 + Math.random() * 0.32
+    this.speed = 0.25 + Math.random() * 0.4
+    this.sway = 0.6 + Math.random() * 1.2
+
+    this.rotation = Math.random() * Math.PI * 2
+    this.rotateSpeed = (Math.random() - 0.5) * 0.003
+
+this.alpha = 0.28 + Math.random() * 0.22
+  }
+
+  animate() {
+    this.y += this.speed
+    this.rotation += this.rotateSpeed
+    this.x += Math.sin(this.y * 0.01) * this.sway
+
+    if (this.y > this.canvas.height + 400) {
+      this.reset()
+    }
+
+    const ctx = this.ctx
+    ctx.save()
+
+    ctx.translate(this.x, this.y)
+    ctx.rotate(this.rotation)
+
+    ctx.globalAlpha = this.alpha
+    ctx.drawImage(
+      this.img,
+      -this.img.width * this.scale / 2,
+      -this.img.height * this.scale / 2,
+      this.img.width * this.scale,
+      this.img.height * this.scale
+    )
+
+    ctx.restore()
+  }
+}
 
 export const BGEffect = () => {
-  const ref = useRef<HTMLCanvasElement>({} as HTMLCanvasElement)
-
-  const petalsRef = useRef<Petal[]>([])
-
-  const resizeTimeoutRef = useRef(0)
+  const ref = useRef<HTMLCanvasElement>(null!)
+  const particlesRef = useRef<Confetti[]>([])
   const animationFrameIdRef = useRef(0)
 
   useEffect(() => {
     const canvas = ref.current
+    const ctx = canvas.getContext("2d")!
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-
-    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
-
-    const petalImg = new Image()
-    petalImg.src = patelUrl
-
-    const getPetalNum = () => {
-      return Math.floor((window.innerWidth * window.innerHeight) / 30000)
+    const resize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
+    resize()
 
-    const initializePetals = () => {
-      const count = getPetalNum()
-      const petals = []
-      for (let i = 0; i < count; i++) {
-        petals.push(new Petal(canvas, ctx, petalImg))
-      }
-      petalsRef.current = petals
+    const getCount = () => Math.min(45, Math.floor(window.innerWidth * window.innerHeight / 35000))
+
+    const init = () => {
+      const count = getCount()
+      particlesRef.current = Array.from({ length: count }, () => new Confetti(canvas, ctx))
     }
-
-    initializePetals()
 
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      petalsRef.current.forEach((petal) => petal.animate())
+      particlesRef.current.forEach(p => p.animate())
       animationFrameIdRef.current = requestAnimationFrame(render)
     }
 
+    init()
     render()
 
     const onResize = () => {
-      clearTimeout(resizeTimeoutRef.current)
-      resizeTimeoutRef.current = window.setTimeout(() => {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-        const newPetalNum = getPetalNum()
-        if (newPetalNum > petalsRef.current.length) {
-          for (let i = petalsRef.current.length; i < newPetalNum; i++) {
-            petalsRef.current.push(new Petal(canvas, ctx, petalImg))
-          }
-        } else if (newPetalNum < petalsRef.current.length) {
-          petalsRef.current.splice(newPetalNum)
-        }
-      }, 100)
+      resize()
+      init()
     }
 
     window.addEventListener("resize", onResize)
-
     return () => {
-      window.removeEventListener("resize", onResize)
       cancelAnimationFrame(animationFrameIdRef.current)
+      window.removeEventListener("resize", onResize)
     }
   }, [])
 
-  return (
-    <div className="bg-effect">
-      <canvas ref={ref} />
-    </div>
-  )
+  return <canvas ref={ref} className="bg-effect" />
+}
+
+class Confetti {
+  x!: number
+  y!: number
+  size!: number
+  speed!: number
+  sway!: number
+  alpha!: number
+  color!: string
+
+  private colors = [
+    "rgba(255,250,240,0.9)",  // 아이보리
+    "rgba(200,215,205,0.9)",  // 세이지
+    "rgba(245,200,180,0.9)"   // 살구
+  ]
+
+  constructor(
+    private canvas: HTMLCanvasElement,
+    private ctx: CanvasRenderingContext2D
+  ) {
+    this.reset(true)
+  }
+
+  reset(initial = false) {
+    this.x = Math.random() * this.canvas.width
+    this.y = initial ? Math.random() * this.canvas.height : -20
+
+    this.size = 4 + Math.random() * 6
+    this.speed = 0.4 + Math.random() * 0.8
+    this.sway = Math.random() * 0.6
+    this.alpha = 0.35 + Math.random() * 0.5
+
+    this.color = this.colors[Math.floor(Math.random() * this.colors.length)]
+  }
+
+  animate() {
+    this.y += this.speed
+    this.x += Math.sin(this.y * 0.01) * this.sway
+
+    if (this.y > this.canvas.height + 20) {
+      this.reset()
+    }
+
+    const ctx = this.ctx
+    ctx.save()
+
+    ctx.globalAlpha = this.alpha
+    ctx.fillStyle = this.color
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+    ctx.fill()
+
+    ctx.restore()
+  }
 }

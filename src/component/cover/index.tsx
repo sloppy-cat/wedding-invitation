@@ -9,7 +9,7 @@ import { COVER_IMAGE } from "../../images"
 import { LazyDiv } from "../lazyDiv"
 
 const DAY_OF_WEEK = [
-  "Sunday",
+  "SUNDAY",
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -34,7 +34,7 @@ export const Cover = () => {
       <div className="image-wrapper">
         <img src={COVER_IMAGE} alt="sample" />
       </div>
-      <div className="subtitle">Save the date for the wedding of</div>
+      <div className="subtitle">A new chapter begins</div>
       <div className="names">
         {GROOM_FULLNAME}
         <div className="divider" />
@@ -42,6 +42,10 @@ export const Cover = () => {
       </div>
       <div className="info">{WEDDING_DATE.format(WEDDING_DATE_FORMAT)}</div>
       <div className="info">{LOCATION}</div>
+      <div className="break" />
+
     </LazyDiv>
   )
 }
+
+

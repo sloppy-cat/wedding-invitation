@@ -10,6 +10,8 @@ import {
   GROOM_MOTHER,
   GROOM_TITLE,
   BRIDE_TITLE,
+  BRIDE_FIRSTNAME,
+  GROOM_FIRSTNAME,
 } from "../../const"
 import { useModal } from "../modal"
 import { Button } from "../button"
@@ -21,7 +23,9 @@ export const Invitation = () => {
   const { openModal, closeModal } = useModal()
   return (
     <LazyDiv className="card invitation">
-      <h2 className="english">Invitation</h2>
+            <div className="break" />
+
+      <h2 className="english">INVITATION</h2>
 
       <div className="break" />
 
@@ -35,23 +39,27 @@ export const Invitation = () => {
       <div className="content">정말 감사하겠습니다.</div>
 
       <div className="break" />
+      <div className="break" />
 
       <div className="name">
         {GROOM_FATHER} · {GROOM_MOTHER}
         <span className="relation">
           의 <span className="relation-name">{GROOM_TITLE}</span>
         </span>{" "}
-        {GROOM_FULLNAME}
+        {GROOM_FIRSTNAME}
       </div>
       <div className="name">
         {BRIDE_FATHER} · {BRIDE_MOTHER}
         <span className="relation">
           의 <span className="relation-name">{BRIDE_TITLE}</span>
         </span>{" "}
-        {BRIDE_FULLNAME}
+        {BRIDE_FIRSTNAME}
       </div>
 
       <div className="break" />
+      <div className="break" />
+      <div className="break" />
+
 
       <Button
         onClick={() => {
