@@ -13,6 +13,7 @@ import image11 from "./MMM_2655.jpeg"
 import image12 from "./MMM_2795.jpeg"
 import image13 from "./MMM_2980.jpeg"
 import image14 from "./MMM_3002.jpeg"
+import image15 from "./noul.jpg"
 
 
 
@@ -20,17 +21,19 @@ import image14 from "./MMM_3002.jpeg"
 export const COVER_IMAGE = coverImage
 
 export const GALLERY_IMAGES = [
-  image1,
-  image2,
-  image3,
-  image4,
+  image7,
   image5,
   image6,
-  image7,
+  image2,
+  image4,
+  image11,
+  image14,
+  image1,
+  image3,
+  image15,
   image8,
   image9,
-  image10,
-  image11,
   image12,
+  image10,
   image13,
-  image14]
+]
