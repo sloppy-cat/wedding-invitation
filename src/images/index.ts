@@ -14,26 +14,42 @@ import image12 from "./MMM_2795.jpeg"
 import image13 from "./MMM_2980.jpeg"
 import image14 from "./MMM_3002.jpeg"
 import image15 from "./noul.jpg"
-
-
+import image16 from "./MMM_1070.jpeg"
+import image17 from "./MMM_1205_2.jpeg"
+import image18 from "./MMM_1420.jpg"
+import image19 from "./MMM_1800.jpeg"
+import image20 from "./MMM_1826.jpeg"
+import image21 from "./MMM_2067.jpeg"
+import image22 from "./MMM_2547.jpeg"
 
 
 export const COVER_IMAGE = coverImage
+
+
 
 export const GALLERY_IMAGES = [
   image7,
   image5,
   image6,
   image2,
+  image22,
+  image20,
   image4,
   image11,
-  image14,
+  image16,
   image1,
-  image3,
+  image17,
+  image21,
   image15,
   image8,
   image9,
+  image3,
+  image18,
+  image19,
   image12,
   image10,
-  image13,
+  image14,
+  image13
+  // coverImage,
+  
 ]
