@@ -10,11 +10,15 @@ import { GuestBook } from "./component/guestbook"
 import { LazyDiv } from "./component/lazyDiv"
 import { ShareButton } from "./component/shareButton"
 import { STATIC_ONLY } from "./env"
+import { BgmProvider } from "./component/BgmContext";
 
 function App() {
   return (
     <div className="background">
-      <BGEffect />
+      <BgmProvider>
+        <BGEffect />
+      </BgmProvider>
+
       <div className="card-view">
         <LazyDiv className="card-group">
           {/* 표지 */}
