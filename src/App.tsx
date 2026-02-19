@@ -11,12 +11,16 @@ import { LazyDiv } from "./component/lazyDiv"
 import { ShareButton } from "./component/shareButton"
 import { STATIC_ONLY } from "./env"
 import { BgmProvider } from "./component/BgmContext";
+import MusicToggle from "./component/MusicToggle"
 
 function App() {
   return (
     <div className="background">
       <BgmProvider>
-        <BGEffect />
+        <>
+          <MusicToggle />
+          <BGEffect />
+        </>
       </BgmProvider>
 
       <div className="card-view">
