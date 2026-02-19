@@ -11,7 +11,8 @@ export const Location = () => {
         <h2 className="english">Location</h2>
         <div className="addr">
           {LOCATION}
-          <div className="detail">{LOCATION_ADDRESS}</div>
+          <br />8층 채플홀
+          <div className="detail">{LOCATION_ADDRESS} </div>
         </div>
         <Map />
       </LazyDiv>

@@ -94,29 +94,32 @@ $transition-duration: 0.3s;
 
     .carousel-indicator {
       display: flex;
-      justify-content: center;
+    flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
       margin-top: 1rem;
+      width: $gallery-width;
 
-      .indicator {
-        width: 1rem;
-        height: 1rem;
-        padding: 0.2rem;
-        &::before {
-          content: "";
-          display: block;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background-color: var(--dark-grey-color);
-        }
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background-color: var(--light-grey-color);
+        border-radius: 2px;
+        overflow: hidden;
         position: relative;
-        z-index: 3;
 
-        &.active {
-          &::before {
-            background-color: var(--dark-color);
-          }
-        }
+        .progress-fill {
+          height: 100%;
+          background-color: var(--theme-color);
+          border-radius: 2px;
+          transition: width 0.3s ease;
+  }
+}
+
+      .indicator-text {
+        font-size: 0.9rem;
+        color: var(--dark-grey-color);
+        font-family: 'Noto Sans KR', sans-serif;
       }
     }
   }

@@ -1,4 +1,7 @@
 import { useBgm } from "./BgmContext";
+import speaker from "../icons/speaker.png";
+import mute from "../icons/mute.png";
+
 
 export default function MusicToggle() {
   const { isPlaying, toggle } = useBgm();
@@ -18,10 +21,16 @@ export default function MusicToggle() {
         width: "48px",
         height: "48px",
         backdropFilter: "blur(6px)",
-        cursor: "pointer"
+        cursor: "pointer",
+        display: "flex",           // 추가
+        alignItems: "center",      // 추가
+        justifyContent: "center"   // 추가
       }}
     >
-      {isPlaying ? "🔊" : "🔈"}
+      {isPlaying ?
+        <img src={speaker} alt="음악 재생 중" style={{ width: "24px", height: "24px" }} /> :
+        <img src={mute} alt="음악 정지" style={{ width: "24px", height: "24px" }} />
+      }
     </button>
   );
 }

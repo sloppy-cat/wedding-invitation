@@ -343,18 +343,20 @@ export const Gallery = () => {
           </div>
         </div>
         <div className="carousel-indicator">
-          {CAROUSEL_ITEMS.map((_, idx) => (
-            <button
-              key={idx}
-              className={`indicator${idx === slide ? " active" : ""}`}
-              onClick={() =>
-                onIndicatorClick(statusRef.current, slideRef.current, idx)
-              }
+          <div className="progress-bar">
+            <div
+              className="progress-fill"
+              style={{
+                width: `${((slide + 1) / CAROUSEL_ITEMS.length) * 100}%`
+              }}
             />
-          ))}
+          </div>
+          <div className="indicator-text">
+            {slide + 1} / {CAROUSEL_ITEMS.length}
+          </div>
         </div>
-      </div>
 
+      </div>
       <div className="break" />
 
       <Button
