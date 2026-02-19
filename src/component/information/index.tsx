@@ -144,7 +144,7 @@ export const Information2 = () => {
           신부측 계좌번호 보기
         </Button>
         <div className="content" style={{
-          fontSize: "15px",
+          fontSize: "0.8rem",
           marginTop: "20px"
         }}>
           *축하 화환은 정중히 사양합니다.
