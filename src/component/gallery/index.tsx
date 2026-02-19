@@ -34,13 +34,13 @@ export const Gallery = () => {
   const { openModal, closeModal } = useModal()
   const carouselRef = useRef<HTMLDivElement>({} as HTMLDivElement)
 
-  useEffect(() => {
-    // preload images
-    GALLERY_IMAGES.forEach((image) => {
-      const img = new Image()
-      img.src = image
-    })
-  }, [])
+  // useEffect(() => {
+  //   // preload images
+  //   GALLERY_IMAGES.forEach((image) => {
+  //     const img = new Image()
+  //     img.src = image
+  //   })
+  // }, [])
 
   const [slide, _setSlide] = useState(0)
   const slideRef = useRef(0)
