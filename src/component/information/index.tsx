@@ -155,6 +155,25 @@ export const Information2 = () => {
   )
 }
 
+export const Information3 = () => {
+  return (
+    <>
+      <div className="info-card">
+        <div className="label">주차 안내</div>
+        <div className="content">
+          주차권은 준비되어 있지 않으니, 대중교통 이용을 권장드립니다.
+          <br />
+          만약 자가용을 이용하시는 경우, 인근 유료 주차장을 이용해주시기 바랍니다.
+          <br />
+           (예시: 판교역 공영주차장, 카페거리 공영주차장 등)
+          <br />
+          장소: 7층 연회장
+        </div>
+      </div>
+    </>
+  )
+}
+
 export const Information = () => {
   if (STATIC_ONLY) {
     return (
