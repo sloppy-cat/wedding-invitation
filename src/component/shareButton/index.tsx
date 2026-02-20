@@ -31,7 +31,7 @@ export const ShareButton = () => {
             content: {
               title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
               description:
-                WEDDING_DATE.format(WEDDING_DATE_FORMAT) + "\n" + LOCATION,
+                "5월 24일 일요일 오후 2시" + "\n" + LOCATION,
               imageUrl:
                 window.location.protocol +
                 "//" +
