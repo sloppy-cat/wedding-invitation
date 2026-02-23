@@ -161,7 +161,7 @@ export const Information3 = () => {
       <div className="info-card">
         <div className="label">주차 안내</div>
         <div className="content">
-          주차권은 준비되어 있지 않으니, 대중교통 이용을 권장드립니다.
+          웨딩홀 건물에 주차하시는 경우 기본 2시간의 무료주차가 제공됩니다.
           <br />
           만약 자가용을 이용하시는 경우, 인근 유료 주차장을 이용해주시기 바랍니다.
           <br />
