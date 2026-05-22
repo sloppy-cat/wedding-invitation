@@ -62,7 +62,31 @@ export const Location = () => {
             <br />
             → 사거리에서 <b>우회전</b> (SK 주유소 뒤편)
             <br />
-
+          </div>
+        </div>
+        <div className="location-info">
+          <div className="transportation-icon-wrapper">
+            <CarIcon className="transportation-icon" />
+          </div>
+          <div className="heading">주차 안내</div>
+          <div />
+          <div className="content">
+            웨딩홀 건물 <b>3~6층</b>과 맞은편 <b>삼환 하이펙스 B동</b>
+            (스타벅스 건물)에 각각 약 <b>300대</b>씩 주차하실 수 있어,
+            <br />
+            총 <b>600대</b>까지 이용 가능합니다.
+            <br />
+            현장에 <b>주차 안내원</b>이 배치되어 안내해 드립니다.
+            <br />
+            <br />
+            * 웨딩홀 건물 주차
+            <br />
+            → <b>2시간 무료</b> (초과 시 <b>15분당 1,000원</b>)
+            <br />
+            <br />
+            * 맞은편 삼환 하이펙스 B동
+            <br />
+            → <b>종일 무료</b> 주차
           </div>
         </div>
       </LazyDiv>
